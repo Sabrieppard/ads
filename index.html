@@ -1,9 +1,715 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Test</title>
-</head>>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Losaj Web Design LLC - Web Development & Digital Solutions in Bay Saint Louis, MS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .advantage-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .advantage-card:hover {
+            transform: scale(1.05);
+        }
+
+        .advantage-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .advantage-icon {
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            z-index: 0;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            border: 3px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .process-step h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-form-section .section-title,
+        .contact-form-section .section-subtitle {
+            color: white;
+        }
+
+        .contact-form-section .section-title::after {
+            background: white;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            padding: 80px 0;
+            background: #1e3c72;
+            color: white;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ffd700;
+        }
+
+        .contact-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .contact-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f1f3d;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.7;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .process-steps::before {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
 <body>
-    <script src="variable.js"></script>
-    <script src="datatypes.js"></script>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">LOSAJ WEB DESIGN</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Transform Your Digital Presence</h1>
+            <p>Cutting-edge web solutions and data processing services that drive real business results in Bay Saint Louis and beyond</p>
+            <a href="#contact" class="cta-button">Start Your Project Today</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <p class="section-subtitle">Your trusted partner in digital excellence</p>
+            <div class="about-content">
+                <p>Losaj Web Design LLC is a premier web development and digital solutions company based in Bay Saint Louis, Mississippi. Founded and led by Sabrina Keppard, we specialize in delivering comprehensive web infrastructure, data processing, and hosting solutions tailored to businesses of all sizes. Our team combines technical expertise with creative vision to build powerful digital platforms that not only look exceptional but perform flawlessly across all devices.</p>
+                
+                <p style="margin-top: 1.5rem;">We understand that your website is often the first impression customers have of your business, which is why we're committed to creating experiences that captivate, engage, and convert. From responsive web design to complex data processing systems, we leverage the latest technologies and industry best practices to ensure your digital presence stands out in today's competitive marketplace.</p>
+                
+                <p style="margin-top: 1.5rem;">What sets us apart is our dedication to understanding your unique business challenges and objectives. We don't believe in one-size-fits-all solutions. Instead, we take the time to listen, strategize, and develop custom web solutions that align perfectly with your brand identity and business goals. Our commitment to excellence, transparent communication, and measurable results has made us a trusted partner for businesses throughout Mississippi and beyond.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Core Services</h2>
+            <p class="section-subtitle">Comprehensive digital solutions for modern businesses</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Custom Web Development</h3>
+                    <p>We create stunning, responsive websites that adapt seamlessly to any device. Our development approach focuses on user experience, performance optimization, and modern design principles to ensure your site not only looks beautiful but drives conversions. Whether you need a simple landing page or a complex web application, we build solutions that grow with your business.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Data Processing Solutions</h3>
+                    <p>Transform raw data into actionable insights with our advanced data processing services. We implement efficient systems for data collection, analysis, and visualization that help you make informed business decisions. Our solutions handle everything from automated data pipelines to real-time analytics, ensuring your data works as hard as you do.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Web Hosting & Infrastructure</h3>
+                    <p>Experience reliable, secure, and lightning-fast web hosting services designed for maximum uptime and performance. We manage all technical aspects of your web infrastructure, from server configuration to security updates, so you can focus on running your business. Our hosting solutions are scalable, secure, and backed by expert support whenever you need it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-choose" class="why-choose">
+        <div class="container">
+            <h2 class="section-title">What Makes Us Different</h2>
+            <p class="section-subtitle">The Losaj advantage in every project</p>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <h3><span class="advantage-icon">⚡</span>Rapid Development Cycle</h3>
+                    <p>We understand that time is money in business. Our streamlined development process and agile methodology ensure your project launches on schedule without compromising quality. We maintain constant communication throughout the development cycle, providing regular updates and incorporating your feedback in real-time to deliver exactly what you envision.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="advantage-icon">🎯</span>Results-Driven Approach</h3>
+                    <p>Every line of code we write and every design decision we make is guided by measurable business objectives. We don't just build websites; we create digital tools that generate leads, increase sales, and strengthen your brand. Our data-driven approach ensures that your investment translates into tangible results that contribute to your bottom line.</p>
+                </div>
+                <div class="advantage-card">
+                    <h3><span class="advantage-icon">🛡️</span>Unwavering Support</h3>
+                    <p>Our relationship doesn't end at launch. We provide comprehensive ongoing support and maintenance to keep your digital assets running smoothly. From security updates to feature enhancements, our team is always available to address your needs. We're not just a service provider; we're your long-term technology partner invested in your continued success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">How We Bring Your Vision To Life</h2>
+            <p class="section-subtitle">Our proven three-phase methodology</p>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Discovery & Strategy</h3>
+                    <p>We begin by deeply understanding your business, target audience, and goals. Through comprehensive consultations and market research, we develop a strategic roadmap that aligns technology solutions with your business objectives. This foundation ensures every decision we make serves your ultimate vision.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Design & Development</h3>
+                    <p>Our creative team transforms strategy into reality, crafting intuitive user interfaces and robust backend systems. We employ iterative development with regular check-ins, allowing you to see progress and provide input throughout the build. This collaborative approach ensures the final product exceeds your expectations.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Launch & Optimization</h3>
+                    <p>After rigorous testing across devices and browsers, we deploy your solution with precision. But launch is just the beginning—we continuously monitor performance metrics, gather user feedback, and implement improvements to ensure your digital presence evolves with your business and delivers maximum ROI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="contact-form-section">
+        <div class="container">
+            <h2 class="section-title">Let's Start Something Great</h2>
+            <p class="section-subtitle">Tell us about your project and we'll bring it to life</p>
+            <form class="contact-form" onsubmit="return handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name (Optional)</label>
+                    <input type="text" id="company" name="company" placeholder="Your company name">
+                </div>
+                <div class="form-group">
+                    <label for="message">Project Details</label>
+                    <textarea id="message" name="message" required placeholder="Tell us about your project, goals, and timeline. The more details you provide, the better we can serve you."></textarea>
+                </div>
+                <button type="submit" class="submit-button">Send Your Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Get In Touch</h2>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📍</div>
+                    <h3>Our Location</h3>
+                    <p>6102 W Jones St<br>Bay Saint Louis, MS 39520-8169<br>United States</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">✉️</div>
+                    <h3>Email Us</h3>
+                    <p><a href="mailto:info@losajwebdesign.pro">info@losajwebdesign.pro</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Losaj Web Design LLC. All rights reserved. | Bay Saint Louis, Mississippi</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            alert('Thank you for your inquiry! We will contact you within 24 hours.\n\nYour message has been received.');
+            event.target.reset();
+            return false;
+        }
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .advantage-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
